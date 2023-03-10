@@ -39,7 +39,7 @@ export const Layout = ({ children, icon, toc, options = { pagination: true }, pa
   const activeCategoryAndPage = useMemo(
     () =>
       slugifiedTableOfContents.map((category) => {
-        const activePage = category.items.find((page) => page.href === pathname)
+        const activePage = category.items.find((page) => page.href === pathname || (page.href === '/' && pathname === ''))
 
         if (activePage) {
           return { category: category.key, page: activePage.href }
