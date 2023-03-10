@@ -1,0 +1,119 @@
+import { Card } from '@jannnik/ui/components/Card'
+import { Link, Info, Warn } from '@jannnik/ui/icons'
+import { Heading } from '@jannnik/ui/components/native-replacements/Heading'
+import { CodeGroup } from '@jannnik/ui/components/native-replacements/Code'
+
+# h1 - Hi there {{ id: 'blub' }}
+
+Some placeholder text to test out margins for headings
+
+## h2 - Hi there
+
+Some placeholder text to test out margins for headings
+
+### h3 - Hi there
+
+Some placeholder text to test out margins for headings
+
+#### h4 - Hi there
+
+Some placeholder text to test out margins for headings
+
+##### h5 - Hi there
+
+Some placeholder text to test out margins for headings
+
+###### h6 - Hi there
+
+Some placeholder text to test out margins for headings
+
+This is a demo documentation landing page.
+
+
+```ts {{ "title": "This is a title of a code block", "highlights": [{ "line": 2, "column": 14, "match": "a, b, c", "color": "red" }, { "line": 8, "column": 3, "match": "b", "color": "green" }, { "line": 10, "column": 5, "match": "return 3", "color": "blue" }] }}
+const blub = '123'
+function abc(a, b, c) {
+
+}
+const id = <T>(element: T): T => element
+const x = {
+  a: 1,
+  b: 2,
+  c() {
+    return 3
+  }
+}
+```
+
+<CodeGroup title="ttttitle">
+  ```ts
+  const blub = '123'
+  ```
+
+  ```python
+  blub = '123'
+  ```
+
+  ```lua {{ "title": "Lua" }}
+  local blub = '123'
+  ```
+</CodeGroup>
+
+
+<CodeGroup>
+  ```ts
+  const blub = '123'
+  ```
+
+  ```python
+  blub = '123'
+  ```
+
+  ```lua {{ "title": "Lua" }}
+  local blub = '123'
+  ```
+</CodeGroup>
+
+## Cards
+
+<Card variant="default" Icon={Link}>
+  This is some kind of message.
+
+  Some more text.
+</Card>
+
+<Card variant="primary" Icon={Info}>
+  This is some kind of message.
+
+  Some more text.
+</Card>
+
+<Card variant="secondary" Icon={Warn}>
+  This is some kind of message.
+
+  Some more text.
+</Card>
+
+<Card variant="positive" Icon={Link}>
+  This is some kind of message.
+
+  Some more text.
+</Card>
+
+<Card variant="negative" Icon={Warn}>
+  This is some kind of message.
+
+  Some more text.
+</Card>
+
+<Card variant="info" Icon={Info}>
+  This is some kind of message.
+
+  Some more text.
+</Card>
+
+<Card variant="primary">
+  Card without an icon.
+
+  Some more text.
+</Card>

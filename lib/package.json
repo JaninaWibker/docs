@@ -1,0 +1,28 @@
+{
+  "name": "@jannnik/ui",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "dependencies": {
+    "@twind/core": "^1.1.2",
+    "@twind/preset-autoprefix": "^1.0.6",
+    "@twind/preset-tailwind": "^1.1.2",
+    "@twind/preset-tailwind-forms": "^1.1.0",
+    "@twind/preset-typography": "^1.0.6"
+  },
+  "devDependencies": {
+    "@total-typescript/ts-reset": "^0.3.7",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "next": "^13.1.6"
+  },
+  "peerDependencies": {
+    "next": "^13.1.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
