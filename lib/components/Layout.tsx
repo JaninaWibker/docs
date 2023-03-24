@@ -6,6 +6,7 @@ import { Header } from './Header'
 import { Footer } from './Footer'
 import type { TocCategory } from './Sidebar'
 import { slugify } from '../util/common'
+import { HeadingProvider } from '../util/heading-context'
 
 /**
  * User facing type for table of contents.
@@ -52,23 +53,25 @@ export const Layout = ({ children, icon, toc, options = { pagination: true }, pa
 
   return (
     <div className={tw('')}>
-      <header className={tw('pointer-events-none fixed inset-0 flex z-20')}>
-        <div className={tw('bg-white pointer-events-auto w-72 overflow-y-hidden hover:overflow-y-auto border-r border-primary-300/50 py-4 pl-6 pr-4')} style={{
-          scrollbarGutter: 'stable'
-        }}>
-          <div className={tw('flex')}>
-            {icon}
+      <HeadingProvider>
+        <header className={tw('pointer-events-none fixed inset-0 flex z-20')}>
+          <div className={tw('bg-white pointer-events-auto w-72 overflow-y-hidden hover:overflow-y-auto border-r border-primary-300/50 py-4 pl-6 pr-4')} style={{
+            scrollbarGutter: 'stable'
+          }}>
+            <div className={tw('flex')}>
+              {icon}
+            </div>
+            <Header />
+              <Sidebar toc={slugifiedTableOfContents} activeCategoryAndPage={activeCategoryAndPage} />
           </div>
-          <Header />
-          <Sidebar toc={slugifiedTableOfContents} activeCategoryAndPage={activeCategoryAndPage} />
+        </header>
+        <div className={tw('ml-72 relative px-6 pt-12')}>
+          <div className={tw('w-full')}>
+            {children}
+          </div>
+          <Footer />
         </div>
-      </header>
-      <div className={tw('ml-72 relative px-6 pt-12')}>
-        <div className={tw('w-full')}>
-          {children}
-        </div>
-        <Footer />
-      </div>
+      </HeadingProvider>
     </div>
   )
 }

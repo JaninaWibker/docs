@@ -1,4 +1,6 @@
 import { tw, tx } from '@twind/core'
+import Link from 'next/link'
+import { usePageHeadings } from '../util/heading-context'
 
 export type TocTopLevelItem = {
   title: string,
@@ -43,9 +45,9 @@ export type TocHeading = {
 const NavigationItemTopLevel = ({ item, isCategoryActive }: { item: TocTopLevelItem, isCategoryActive: boolean }) => {
   return (
     <li className={tw('')}>
-      <a className={tw('no-underline text-sm font-semibold text-slate-700')} href={item.href}>
+      <Link className={tw('no-underline text-sm font-semibold text-slate-700')} href={item.href}>
         {item.title}
-      </a>
+      </Link>
     </li>
   )
 }
@@ -59,15 +61,17 @@ type NavigationItemProps = {
 
 const NavigationItem = ({ item, active, headings, headingsInView }: NavigationItemProps) => {
   return (
-    <li className={tw('py-1')}>
-      <a className={tx('block pl-2 text-sm', {
+    <li className={tw('')}>
+      <Link className={tx('block py-1 pl-2 text-sm', {
         'text-slate-600': !active,
         'text-slate-900': active
-      })} href={item.href} data-state-active={active}>{item.title}</a>
+      })} href={item.href} data-state-active={active}>
+        {item.title}
+      </Link>
       <ul className={tw('')}>
         {headings.map((heading) => (
           <li key={heading.title}>
-            <a href={`${item.href}#${heading.hash}`}>{heading.title}</a>
+            <Link className={tw('block text-sm py-1 pl-6 pr-2')} href={`#${heading.hash}`}>{heading.title}</Link>
           </li>
         ))}
       </ul>
@@ -77,16 +81,24 @@ const NavigationItem = ({ item, active, headings, headingsInView }: NavigationIt
 
 const NavigationCategory = ({ category, isCategoryActive, activePage }: { category: TocCategory, isCategoryActive: boolean, activePage: TocItem['href'] | undefined }) => {
   if (isCategoryActive) console.log(category.key, activePage)
+
+  const pageHeadings = usePageHeadings()
+  const actualPageHeadings = Object.values(pageHeadings).map(({ id, title }) => ({
+    hash: id,
+    title,
+  }))
+  console.log(actualPageHeadings)
+
   return (
     <li className={tw('mb-6')}>
       {category.href
-        ? <a className={tw('no-underline text-sm font-semibold text-slate-700')} href={category.href}>{category.title}</a>
+        ? <Link className={tw('no-underline text-sm font-semibold text-slate-700')} href={category.href}>{category.title}</Link>
         : <span className={tw('text-sm font-semibold')}>{category.title}</span>
       }
       <div className={tw('relative pl-1')}>
         <ul className={tw('pl-2 pt-2')}>
-        {category.items.map((item) => ( // TODO: where do we get headings, headingsInView and active from?
-          <NavigationItem key={item.title} item={item} active={item.href === activePage} headings={[]} headingsInView={[]} />
+        {category.items.map((item) => ( // TODO: where do we get headingsInView from?
+          <NavigationItem key={item.title} item={item} active={item.href === activePage} headings={item.href === activePage ? actualPageHeadings : []} headingsInView={[]} />
         ))}
       </ul>
         <div className={tw('absolute top-0 mt-2 h-[calc(100%-2*4px)] w-px bg-primary-300/50')}></div>

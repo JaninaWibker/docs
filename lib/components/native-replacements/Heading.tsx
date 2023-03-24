@@ -1,8 +1,10 @@
+import { forwardRef, useEffect, useRef } from 'react'
 import type { ComponentPropsWithoutRef, PropsWithChildren } from 'react'
 import Link from 'next/link'
 import { tw, tx } from '@twind/core'
 import { slugify, stringifyReactNode } from '../../util/common'
 import { Link as LinkIcon } from '../../icons'
+import { useSlugs, useUpdatePageHeadings } from '../../util/heading-context'
 
 type Levels = 1 | 2 | 3 | 4 | 5 | 6
 
@@ -19,16 +21,18 @@ type AnchorProps = PropsWithChildren<{
   id: string
 }>
 
-const Anchor = ({ id, children }: AnchorProps) => (
-  <Link href={`#${id}`} className={tw('group no-underline relative')}>
-    <div className={tw('absolute mt-[1.5px] -ml-[34.5px] h-full opacity-0 group-hover:opacity-100 transition flex flex-col justify-center z-30')}>
-      <div className={tw('w-5 h-5 mr-[14px] bg-white rounded-lg ring-1 ring-inset ring-primary-300 hover:ring-primary-400')}>
-        <LinkIcon className={tw('w-5 h-5 p-1 stroke-primary-500')} />
+const Anchor = forwardRef<HTMLAnchorElement | null, AnchorProps>(function Anchor({ id, children }, ref) {
+  return (
+    <Link ref={ref} href={`#${id}`} className={tw('group no-underline relative')}>
+      <div className={tw('absolute mt-[1.5px] -ml-[34.5px] h-full opacity-0 group-hover:opacity-100 transition flex flex-col justify-center z-30')}>
+        <div className={tw('w-5 h-5 mr-[14px] bg-white rounded-lg ring-1 ring-inset ring-primary-300 hover:ring-primary-400')}>
+          <LinkIcon className={tw('w-5 h-5 p-1 stroke-primary-500')} />
+        </div>
       </div>
-    </div>
-    {children}
-  </Link>
-)
+      {children}
+    </Link>
+  )
+})
 
 const headingStyles = {
   // no margin top because a h1 is likely the first element on the page
@@ -44,15 +48,39 @@ export const Heading = <Level extends Levels>({
   children,
   className,
   level,
-  id = slugify(stringifyReactNode(children)),
+  title = stringifyReactNode(children),
+  id = slugify(title),
   hasLink = false,
   ...rest
 }: HeadingProps<Level>) => {
   const Component = `h${level}` as const
 
+  const headingAnchorRef = useRef<HTMLAnchorElement | null>(null)
+  const setPageHeadings = useUpdatePageHeadings()
+  const slugs = useSlugs()
+
+  useEffect(() => {
+    if (!hasLink) return
+    if (!headingAnchorRef.current) return
+
+    const heading = headingAnchorRef.current
+    slugs.set(heading, [id, { placeholder: 1 /* TODO */ }])
+    setPageHeadings((headings) => ({ ...headings, [id]: { id, title, index: 0 /* TODO */ } }))
+    console.log('added heading', id)
+    return () => {
+      slugs.delete(heading)
+      setPageHeadings((headings) => {
+        const newHeadings = { ...headings }
+        delete newHeadings[id]
+        return newHeadings
+      })
+      console.log('deleted heading', id)
+    }
+  }, [id, title, hasLink, headingAnchorRef, slugs, setPageHeadings])
+
   return (
     <Component className={tx(headingStyles[Component], className)} id={id} {...rest}>
-      {hasLink ? <Anchor id={id}>{children}</Anchor> : children}
+      {hasLink ? <Anchor id={id} ref={headingAnchorRef}>{children}</Anchor> : children}
     </Component>
   )
 }
