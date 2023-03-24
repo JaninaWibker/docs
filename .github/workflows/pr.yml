@@ -1,0 +1,24 @@
+name: PR Gate
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@c3b53f6a16e57305370b4ae5a540c2077a1d50dd
+        with:
+          version: 6.32.2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "pnpm"
+      - run: pnpm install
+      - name: Linting
+        run: pnpm -r lint
+      - name: Build mdx package
+        run: pnpm --filter @jannnik/mdx build
+      - name: Re-install to consume newly build mdx package
+        run: pnpm install
+      - name: Build app package
+        run: pnpm --filter @jannnik/docs build
