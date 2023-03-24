@@ -14,11 +14,15 @@ jobs:
           node-version: "18"
           cache: "pnpm"
       - run: pnpm install
-      - name: Linting
-        run: pnpm -r lint
+      - name: Lint mdx package
+        run: pnpm --filter @jannnik/mdx lint
+      - name: Lint lib package
+        run: pnpm --filter @jannnik/lib lint
       - name: Build mdx package
         run: pnpm --filter @jannnik/mdx build
       - name: Re-install to consume newly build mdx package
         run: pnpm install
-      - name: Build app package
+      - name: Lint docs package
+        run: pnpm --filter @jannnik/docs lint
+      - name: Build docs package
         run: pnpm --filter @jannnik/docs build
