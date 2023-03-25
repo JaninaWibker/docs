@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         packages:
-          - { name: '@jannnik/mdx', path: 'mdx', registry: 'https://registry.npmjs.org', scope: '@jannnik', token: '${{ secrets.NPM_TOKEN }}' }
-          - { name: '@jannnik/lib', path: 'lib', registry: 'https://registry.npmjs.org', scope: '@jannnik', token: '${{ secrets.NPM_TOKEN }}' }
+          - { name: '@jannnik/mdx', path: 'mdx', registry: 'https://registry.npmjs.org', scope: '@jannnik', token_secret_name: 'NPM_TOKEN' }
+          #- { name: '@jannnik/lib', path: 'lib', registry: 'https://registry.npmjs.org', scope: '@jannnik', token_secret_name: 'NPM_TOKEN' }
     runs-on: ubuntu-latest
     permissions:
       contents: read # this is needed by version-metadata
@@ -44,7 +44,7 @@ jobs:
         run: |
           echo "CI_PUBLISHED_VERSION=$(npm show $PACKAGE version)" >> $GITHUB_ENV
         env:
-          NODE_AUTH_TOKEN: ${{ matrix.packages.token }}
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.package.token_secret_name] }}
           PACKAGE: ${{ matrix.packages.name }}
       - name: Fallback to 0.0.0 if no published version exists
         if: steps.last-published-version.outcome == 'failure'
@@ -70,7 +70,7 @@ jobs:
           npm version --git-tag-version false --allow-same-version true ${{ steps.publish.outputs.version }}
           npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ matrix.packages.token }}
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.package.token_secret_name] }}
       - name: Create action summary
         run: |
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
