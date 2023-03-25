@@ -41,11 +41,13 @@ jobs:
           if [ $? -eq 0 ]
           then
             echo "Last published version is $version"
+            echo "CI_HASNT_PUBLISHED_YET=false" >> $GITHUB_ENV
             echo "CI_PUBLISHED_VERSION=$version" >> $GITHUB_ENV
           else
             echo "Determining last published version failed, falling back to 0.0.0"
             echo "This should only happen if the package has never been published before."
             echo "If it happens for any other reason you should investigate why it failed."
+            echo "CI_HASNT_PUBLISHED_YET=true" >> $GITHUB_ENV
             echo "CI_PUBLISHED_VERSION=0.0.0" >> $GITHUB_ENV
           fi
         env:
@@ -71,7 +73,9 @@ jobs:
         run: |
           echo "Publishing version ${{ steps.publish.outputs.version }}"
           npm version --git-tag-version false --allow-same-version true ${{ steps.publish.outputs.version }}
-          npm publish
+          # "--access public" is required for scoped packages when publishing for the first time
+          # as by default scoped packages are set to private
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets[matrix.packages.token_secret_name] }}
       - name: Create action summary
