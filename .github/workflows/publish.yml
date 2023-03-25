@@ -16,9 +16,6 @@ jobs:
       contents: read # this is needed by version-metadata
       pull-requests: read # this is needed by version-metadata
       packages: write
-    defaults:
-      run:
-        working-directory: ./lib
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2.2.4
@@ -32,11 +29,11 @@ jobs:
           registry-url: ${{ matrix.packages.registry }}
           scope: ${{ matrix.package.scope }}
       - run: pnpm install
-      - run: pnpm build
+      - run: pnpm --filter "${{ matrix.package.name }}" build
       - id: version-metadata
         uses: Quantco/ui-actions/version-metadata@v1.0.6
         with:
-          file: lib/package.json
+          file: "${{ matrix.packages.path }}/package.json"
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Determine last published version
         id: last-published-version
