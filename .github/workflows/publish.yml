@@ -27,9 +27,9 @@ jobs:
           node-version: "16"
           cache: "pnpm"
           registry-url: ${{ matrix.packages.registry }}
-          scope: ${{ matrix.package.scope }}
+          scope: ${{ matrix.packages.scope }}
       - run: pnpm install
-      - run: pnpm --filter "${{ matrix.package.name }}" build
+      - run: 'pnpm --filter "${{ matrix.packages.name }}" build'
       - id: version-metadata
         uses: Quantco/ui-actions/version-metadata@v1.0.6
         with:
@@ -41,7 +41,7 @@ jobs:
         run: |
           echo "CI_PUBLISHED_VERSION=$(npm show $PACKAGE version)" >> $GITHUB_ENV
         env:
-          NODE_AUTH_TOKEN: ${{ secrets[matrix.package.token_secret_name] }}
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.packages.token_secret_name] }}
           PACKAGE: ${{ matrix.packages.name }}
       - name: Fallback to 0.0.0 if no published version exists
         if: steps.last-published-version.outcome == 'failure'
@@ -67,7 +67,7 @@ jobs:
           npm version --git-tag-version false --allow-same-version true ${{ steps.publish.outputs.version }}
           npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets[matrix.package.token_secret_name] }}
+          NODE_AUTH_TOKEN: ${{ secrets[matrix.packages.token_secret_name] }}
       - name: Create action summary
         run: |
           echo "$SUMMARY" >> $GITHUB_STEP_SUMMARY
