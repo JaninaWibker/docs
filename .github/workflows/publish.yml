@@ -24,12 +24,10 @@ jobs:
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
           cache: "pnpm"
           registry-url: ${{ matrix.packages.registry }}
           scope: ${{ matrix.packages.scope }}
-      - run: pnpm install
-      - run: 'pnpm --filter "${{ matrix.packages.name }}" build'
       - id: version-metadata
         uses: Quantco/ui-actions/version-metadata@v1.0.7
         with:
@@ -62,9 +60,14 @@ jobs:
           package-json-file-path: '${{ matrix.packages.path }}/package.json'
           latest-registry-version: ${{ env.CI_PUBLISHED_VERSION }}
           version-metadata-json: ${{ steps.version-metadata.outputs.json }}
-      - name: publish npm package
-        # github casts all outputs to strings, so evaluate against the string 'true' here :)
+      - run: pnpm install
+      # github casts all outputs to strings, so evaluate against the string 'true' here :)
         if: steps.publish.outputs.publish == 'true'
+      - run: 'pnpm --filter "${{ matrix.packages.name }}" build'
+        if: steps.publish.outputs.publish == 'true'
+      - name: publish npm package
+        if: steps.publish.outputs.publish == 'true'
+        working-directory: ${{ matrix.packages.path }}
         run: |
           echo "Publishing version ${{ steps.publish.outputs.version }}"
           npm version --git-tag-version false --allow-same-version true ${{ steps.publish.outputs.version }}
