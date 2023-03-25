@@ -38,6 +38,7 @@ jobs:
       - name: Determine last published version
         id: last-published-version
         run: |
+          set +e # disable pipefail, we handle errors and don't want to exit when one occurs
           version=$(npm show $PACKAGE version)
           if [ $? -eq 0 ]
           then
