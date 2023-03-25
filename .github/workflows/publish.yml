@@ -37,19 +37,21 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Determine last published version
         id: last-published-version
-        continue-on-error: true # we want to continue even if the package hasn't been published yet
         run: |
-          echo "CI_PUBLISHED_VERSION=$(npm show $PACKAGE version)" >> $GITHUB_ENV
+          version=$(npm show $PACKAGE version)
+          if [ $? -eq 0 ]
+          then
+            echo "Last published version is $version"
+            echo "CI_PUBLISHED_VERSION=$version" >> $GITHUB_ENV
+          else
+            echo "Determining last published version failed, falling back to 0.0.0"
+            echo "This should only happen if the package has never been published before."
+            echo "If it happens for any other reason you should investigate why it failed."
+            echo "CI_PUBLISHED_VERSION=0.0.0" >> $GITHUB_ENV
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets[matrix.packages.token_secret_name] }}
           PACKAGE: ${{ matrix.packages.name }}
-      - name: Fallback to 0.0.0 if no published version exists
-        if: steps.last-published-version.outcome == 'failure'
-        run: |
-          echo "Determining last published version failed, falling back to 0.0.0"
-          echo "This should only happen if the package has never been published before."
-          echo "If it happens for any other reason you should investigate why it failed."
-          echo "CI_PUBLISHED_VERSION=0.0.0" >> $GITHUB_ENV
       - name: Determine if a new version should be published
         uses: Quantco/ui-actions/publish@v1.0.7
         id: publish
