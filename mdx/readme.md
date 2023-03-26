@@ -18,6 +18,16 @@ pnpm add @jannnik/mdx
 ```
 
 ```js
+import {
+  rehypeParseCodeBlocks,
+  rehypeShiki,
+  rehypeHighlight,
+  rehypeMdxAnnotations,
+  recmaNextjsStaticProps,
+  recmaMdxAnnotations,
+  remarkMdxAnnotations
+} from '@jannnik/mdx'
+
 const withMDX = nextMDX({
   options: {
     remarkPlugins: [remarkMdxAnnotations],

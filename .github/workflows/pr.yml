@@ -16,8 +16,8 @@ jobs:
       - run: pnpm install
       - name: Lint mdx package
         run: pnpm --filter @jannnik/mdx lint
-      - name: Lint lib package
-        run: pnpm --filter @jannnik/lib lint
+      - name: Lint ui package
+        run: pnpm --filter @jannnik/ui lint
       - name: Build mdx package
         run: pnpm --filter @jannnik/mdx build
       - name: Re-install to consume newly build mdx package

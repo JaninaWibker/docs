@@ -1,4 +1,4 @@
-import type { PropsWithChildren, ReactNode } from 'react'
+import type { PropsWithChildren } from 'react'
 import type { IconComponent } from '../icons'
 import { tw, tx } from '@twind/core'
 

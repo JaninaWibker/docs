@@ -10,7 +10,7 @@ jobs:
       matrix:
         packages:
           - { name: '@jannnik/mdx', path: 'mdx', registry: 'https://registry.npmjs.org', scope: '@jannnik', token_secret_name: 'NPM_TOKEN' }
-          #- { name: '@jannnik/lib', path: 'lib', registry: 'https://registry.npmjs.org', scope: '@jannnik', token_secret_name: 'NPM_TOKEN' }
+          - { name: '@jannnik/ui', path: 'lib', registry: 'https://registry.npmjs.org', scope: '@jannnik', token_secret_name: 'NPM_TOKEN' }
     runs-on: ubuntu-latest
     permissions:
       contents: read # this is needed by version-metadata
