@@ -67,17 +67,19 @@ importers:
       '@types/react': ^18.0.21
       '@types/react-dom': ^18.0.6
       next: ^13.1.6
+      typescript: ^4.9.4
     dependencies:
-      '@twind/core': 1.1.3
-      '@twind/preset-autoprefix': 1.0.7_@twind+core@1.1.3
-      '@twind/preset-tailwind': 1.1.4_@twind+core@1.1.3
-      '@twind/preset-tailwind-forms': 1.1.2_aemerndkhde3gyu3i6otrxneli
-      '@twind/preset-typography': 1.0.7_@twind+core@1.1.3
+      '@twind/core': 1.1.3_typescript@4.9.5
+      '@twind/preset-autoprefix': 1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4
+      '@twind/preset-tailwind': 1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4
+      '@twind/preset-tailwind-forms': 1.1.2_kafzkapdr3kluphwvxzrrhnmh4
+      '@twind/preset-typography': 1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4
     devDependencies:
       '@total-typescript/ts-reset': 0.3.7
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
       next: 13.1.6
+      typescript: 4.9.5
 
   mdx:
     specifiers:
@@ -574,7 +576,7 @@ packages:
     resolution: {integrity: sha512-yXt2BRRVCJVvzWaxac5n0nCXzIrQEBE/MeYlNQ8/Iq7UeelNmm/AdnUAu18ilSS893mbEQ4u6whPt/HvOPc4rw==}
     dev: true
 
-  /@twind/core/1.1.3:
+  /@twind/core/1.1.3_typescript@4.9.5:
     resolution: {integrity: sha512-/B/aNFerMb2IeyjSJy3SJxqVxhrT77gBDknLMiZqXIRr4vNJqiuhx7KqUSRzDCwUmyGuogkamz+aOLzN6MeSLw==}
     engines: {node: '>=14.15.0'}
     peerDependencies:
@@ -584,9 +586,10 @@ packages:
         optional: true
     dependencies:
       csstype: 3.1.1
+      typescript: 4.9.5
     dev: false
 
-  /@twind/preset-autoprefix/1.0.7_@twind+core@1.1.3:
+  /@twind/preset-autoprefix/1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4:
     resolution: {integrity: sha512-3wmHO0pG/CVxYBNZUV0tWcL7CP0wD5KpyWAQE/KOalWmOVBj+nH6j3v6Y3I3pRuMFaG5DC78qbYbhA1O11uG3w==}
     engines: {node: '>=14.15.0'}
     peerDependencies:
@@ -596,11 +599,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@twind/core': 1.1.3
+      '@twind/core': 1.1.3_typescript@4.9.5
       style-vendorizer: 2.2.3
+      typescript: 4.9.5
     dev: false
 
-  /@twind/preset-tailwind-forms/1.1.2_aemerndkhde3gyu3i6otrxneli:
+  /@twind/preset-tailwind-forms/1.1.2_kafzkapdr3kluphwvxzrrhnmh4:
     resolution: {integrity: sha512-svO6rl/kid+qupMB9MsedPIFr1S3MVmlUN66+0k693umFEZXwtcj5x6DnJI6t412a2P1gdEH1J3eeHxcdUK5fg==}
     engines: {node: '>=14.15.0'}
     peerDependencies:
@@ -611,11 +615,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@twind/core': 1.1.3
-      '@twind/preset-tailwind': 1.1.4_@twind+core@1.1.3
+      '@twind/core': 1.1.3_typescript@4.9.5
+      '@twind/preset-tailwind': 1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4
+      typescript: 4.9.5
     dev: false
 
-  /@twind/preset-tailwind/1.1.4_@twind+core@1.1.3:
+  /@twind/preset-tailwind/1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4:
     resolution: {integrity: sha512-zv85wrP/DW4AxgWrLfH7kyGn/KJF3K04FMLVl2AjoxZGYdCaoZDkL8ma3hzaKQ+WGgBFRubuB/Ku2Rtv/wjzVw==}
     engines: {node: '>=14.15.0'}
     peerDependencies:
@@ -625,10 +630,11 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@twind/core': 1.1.3
+      '@twind/core': 1.1.3_typescript@4.9.5
+      typescript: 4.9.5
     dev: false
 
-  /@twind/preset-typography/1.0.7_@twind+core@1.1.3:
+  /@twind/preset-typography/1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4:
     resolution: {integrity: sha512-Xqh3dSFUnqWCVmVpsq4Xq7mAYpjVhd5ynq+uorTc5wEr/m/M+Bgz1QiC4bm/0F+NPq92K96uWz3t0clpHkTz5A==}
     engines: {node: '>=14.15.0'}
     peerDependencies:
@@ -638,7 +644,8 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@twind/core': 1.1.3
+      '@twind/core': 1.1.3_typescript@4.9.5
+      typescript: 4.9.5
     dev: false
 
   /@types/acorn/4.0.6:
@@ -3725,7 +3732,6 @@ packages:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
-    dev: true
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
