@@ -92,6 +92,7 @@ importers:
 
   mdx:
     specifiers:
+      '@types/estree': ^1.0.0
       '@types/hast': ^2.3.4
       '@types/node': ^18.11.17
       '@typescript-eslint/eslint-plugin': ^5.47.0
@@ -112,6 +113,7 @@ importers:
       ts-pattern: ^4.2.1
       tsup: ^6.5.0
       typescript: ^4.9.4
+      unified: ^10.1.2
       unist-util-visit: ^4.1.2
     dependencies:
       '@types/hast': 2.3.4
@@ -123,6 +125,7 @@ importers:
       ts-pattern: 4.2.1
       unist-util-visit: 4.1.2
     devDependencies:
+      '@types/estree': 1.0.0
       '@types/node': 18.14.2
       '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
       '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
@@ -136,6 +139,7 @@ importers:
       prettier: 2.8.4
       tsup: 6.6.3_typescript@4.9.5
       typescript: 4.9.5
+      unified: 10.1.2
 
 packages:
 
