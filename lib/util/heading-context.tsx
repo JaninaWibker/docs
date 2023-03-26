@@ -22,7 +22,6 @@ export const useSlugs = () => useContext(slugsContext)
 
 export const HeadingProvider = ({ children }: PropsWithChildren) => {
   const [headingsOnPage, setHeadingsOnPage] = useState<HeadingsOnPage>({})
-  console.log('did this re-run?', headingsOnPage)
   return (
     <pageHeadingsContext.Provider value={headingsOnPage}>
       <updatePageHeadingsContext.Provider value={setHeadingsOnPage}>

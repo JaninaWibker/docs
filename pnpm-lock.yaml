@@ -13,6 +13,11 @@ importers:
       '@mdx-js/react': ^2.3.0
       '@next/font': ^13.0.6
       '@next/mdx': ^13.1.6
+      '@twind/core': ^1.1.2
+      '@twind/preset-autoprefix': ^1.0.6
+      '@twind/preset-tailwind': ^1.1.2
+      '@twind/preset-tailwind-forms': ^1.1.0
+      '@twind/preset-typography': ^1.0.6
       '@types/node': 18.7.23
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
@@ -35,6 +40,11 @@ importers:
       '@jannnik/ui': link:../lib
       '@next/font': 13.1.6
       '@next/mdx': 13.1.6_msthxdjvrhmdkfpqqalumiidgq
+      '@twind/core': 1.1.3_typescript@4.9.5
+      '@twind/preset-autoprefix': 1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4
+      '@twind/preset-tailwind': 1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4
+      '@twind/preset-tailwind-forms': 1.1.2_kafzkapdr3kluphwvxzrrhnmh4
+      '@twind/preset-typography': 1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -68,14 +78,13 @@ importers:
       '@types/react-dom': ^18.0.6
       next: ^13.1.6
       typescript: ^4.9.4
-    dependencies:
+    devDependencies:
+      '@total-typescript/ts-reset': 0.3.7
       '@twind/core': 1.1.3_typescript@4.9.5
       '@twind/preset-autoprefix': 1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4
       '@twind/preset-tailwind': 1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4
       '@twind/preset-tailwind-forms': 1.1.2_kafzkapdr3kluphwvxzrrhnmh4
       '@twind/preset-typography': 1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4
-    devDependencies:
-      '@total-typescript/ts-reset': 0.3.7
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
       next: 13.1.6
@@ -587,7 +596,6 @@ packages:
     dependencies:
       csstype: 3.1.1
       typescript: 4.9.5
-    dev: false
 
   /@twind/preset-autoprefix/1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4:
     resolution: {integrity: sha512-3wmHO0pG/CVxYBNZUV0tWcL7CP0wD5KpyWAQE/KOalWmOVBj+nH6j3v6Y3I3pRuMFaG5DC78qbYbhA1O11uG3w==}
@@ -602,7 +610,6 @@ packages:
       '@twind/core': 1.1.3_typescript@4.9.5
       style-vendorizer: 2.2.3
       typescript: 4.9.5
-    dev: false
 
   /@twind/preset-tailwind-forms/1.1.2_kafzkapdr3kluphwvxzrrhnmh4:
     resolution: {integrity: sha512-svO6rl/kid+qupMB9MsedPIFr1S3MVmlUN66+0k693umFEZXwtcj5x6DnJI6t412a2P1gdEH1J3eeHxcdUK5fg==}
@@ -618,7 +625,6 @@ packages:
       '@twind/core': 1.1.3_typescript@4.9.5
       '@twind/preset-tailwind': 1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4
       typescript: 4.9.5
-    dev: false
 
   /@twind/preset-tailwind/1.1.4_3zgnruiul6lsk2vdq6ajg5kdh4:
     resolution: {integrity: sha512-zv85wrP/DW4AxgWrLfH7kyGn/KJF3K04FMLVl2AjoxZGYdCaoZDkL8ma3hzaKQ+WGgBFRubuB/Ku2Rtv/wjzVw==}
@@ -632,7 +638,6 @@ packages:
     dependencies:
       '@twind/core': 1.1.3_typescript@4.9.5
       typescript: 4.9.5
-    dev: false
 
   /@twind/preset-typography/1.0.7_3zgnruiul6lsk2vdq6ajg5kdh4:
     resolution: {integrity: sha512-Xqh3dSFUnqWCVmVpsq4Xq7mAYpjVhd5ynq+uorTc5wEr/m/M+Bgz1QiC4bm/0F+NPq92K96uWz3t0clpHkTz5A==}
@@ -646,7 +651,6 @@ packages:
     dependencies:
       '@twind/core': 1.1.3_typescript@4.9.5
       typescript: 4.9.5
-    dev: false
 
   /@types/acorn/4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -3537,7 +3541,6 @@ packages:
 
   /style-vendorizer/2.2.3:
     resolution: {integrity: sha512-/VDRsWvQAgspVy9eATN3z6itKTuyg+jW1q6UoTCQCFRqPDw8bi3E1hXIKnGw5LvXS2AQPuJ7Af4auTLYeBOLEg==}
-    dev: false
 
   /styled-jsx/5.1.1:
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}

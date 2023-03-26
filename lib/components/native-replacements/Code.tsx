@@ -2,12 +2,13 @@ import { createContext, useContext, useState, Children } from 'react'
 import type { ComponentPropsWithoutRef, PropsWithChildren, ReactNode, ReactElement, Key } from 'react'
 import { tw, tx } from '@twind/core'
 
-type PreProps = PropsWithChildren<{
-  className?: string,
-  fileName?: string
-}> & ComponentPropsWithoutRef<'pre'>
+type PreProps = ComponentPropsWithoutRef<'pre'> &
+  PropsWithChildren<{
+    className?: string,
+    fileName?: string
+  }>
 
-type CodeProps = PropsWithChildren<{ className?: string }> & ComponentPropsWithoutRef<'code'>
+type CodeProps = ComponentPropsWithoutRef<'code'> & PropsWithChildren<{ className?: string }>
 
 type CodeGroupProps = {
   title: string,
@@ -27,25 +28,39 @@ const commonLanguagesPrettyNames: Record<string, string> = {
 
 const CodeGroupContext = createContext(false)
 
-const CodeBlockTabs = <KeyType extends Key | null | undefined = string>({ tabs, selected, onChange }: { tabs: Array<{ key: KeyType, title: string }>, selected: KeyType, onChange: (key: KeyType) => void }) => (
+const CodeBlockTabs = <KeyType extends Key | null | undefined = string>({
+  tabs,
+  selected,
+  onChange
+}: {
+  tabs: Array<{ key: KeyType, title: string }>,
+  selected: KeyType,
+  onChange: (key: KeyType) => void
+}) => (
   <div>
     {tabs.map(({ key, title }) => (
-      <button className={tx('text-sm px-2 hover:text-primary-500', {
-        'text-primary-400': key === selected,
-        'text-white': key !== selected,
-      })} onClick={() => onChange(key)} key={key}>{title}</button>
+      <button
+        className={tx('text-sm px-2 hover:text-primary-500', {
+          'text-primary-400': key === selected,
+          'text-white': key !== selected,
+        })}
+        onClick={() => onChange(key)}
+        key={key}
+      >
+        {title}
+      </button>
     ))}
   </div>
-)
+  )
 
 const CodeBlockContainer = ({ children, titleBar }: PropsWithChildren<{ titleBar?: ReactNode }>) => (
-  <div className={tw('my-6 rounded-xl shadow-md')}>
+  <div className={tw('overflow-hidden my-6 rounded-xl shadow-md not-prose')} style={{ colorScheme: 'dark' }}>
     {titleBar !== undefined ? (
       <div className={tw('px-4 py-2 rounded-t-xl border-t-2 border-l-2 border-r-2 border-dark-gray-800 bg-dark-gray-700')}>
         {titleBar}
       </div>
     ) : null}
-    <div className={tx('p-4 border-2 border-dark-gray-800 bg-dark-gray-600 ', {
+    <div className={tx('overflow-x-auto p-4 border-2 border-dark-gray-800 bg-dark-gray-600 ', {
       'rounded-b-xl': titleBar !== undefined,
       'rounded-xl': titleBar === undefined,
     })}>
@@ -62,7 +77,7 @@ export const CodeGroup = ({ title, children }: CodeGroupProps) => {
     const language = props.language
     const title = props.title
 
-    return { key: index, title: commonLanguagesPrettyNames[language] || title || language }
+    return { key: index, title: title || commonLanguagesPrettyNames[language] || language }
   }) || []
 
   const titleComponent = <span className={tw('text-sm font-semibold text-white')}>{title}</span>
@@ -72,7 +87,7 @@ export const CodeGroup = ({ title, children }: CodeGroupProps) => {
 
   return (
     <CodeGroupContext.Provider value={true}>
-      <CodeBlockContainer titleBar={<div className={tw('flex justify-between')}>{titleComponent}{tabsComponent}</div>}>
+      <CodeBlockContainer titleBar={<div className={tw('flex justify-between items-center')}>{titleComponent}{tabsComponent}</div>}>
         {children[selectedTab]}
       </CodeBlockContainer>
     </CodeGroupContext.Provider>
@@ -83,7 +98,7 @@ export const Pre = ({ children, className, title, ...restProps }: PreProps) => {
   const isPartOfCodeGroup = useContext(CodeGroupContext)
 
   const preElement = (
-    <pre className={className} {...restProps}>
+    <pre className={tx('text-sm font-normal leading-6', className)} {...restProps}>
       {children}
     </pre>
   )
@@ -105,10 +120,11 @@ export const Code = ({ children, className, ...restProps }: CodeProps) => (
   </code>
 )
 
-type MaybeHijackedSpanProps = PropsWithChildren<{
-  highlight?: string,
-  highlightColor?: string
-}> & ComponentPropsWithoutRef<'span'>
+type MaybeHijackedSpanProps = ComponentPropsWithoutRef<'span'> &
+  PropsWithChildren<{
+    highlight?: string,
+    highlightColor?: string
+  }>
 
 export const Span = ({ children, className, highlight, highlightColor, ...restProps }: MaybeHijackedSpanProps) => {
   // we want to hijack the rendering of 'highlight' spans, the other ones we don't want to touch
