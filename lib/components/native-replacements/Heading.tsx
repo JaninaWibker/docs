@@ -66,7 +66,6 @@ export const Heading = <Level extends Levels>({
     const heading = headingAnchorRef.current
     slugs.set(heading, [id, { placeholder: 1 /* TODO */ }])
     setPageHeadings((headings) => ({ ...headings, [id]: { id, title, index: 0 /* TODO */ } }))
-    console.log('added heading', id)
     return () => {
       slugs.delete(heading)
       setPageHeadings((headings) => {
@@ -74,7 +73,6 @@ export const Heading = <Level extends Levels>({
         delete newHeadings[id]
         return newHeadings
       })
-      console.log('deleted heading', id)
     }
   }, [id, title, hasLink, headingAnchorRef, slugs, setPageHeadings])
 

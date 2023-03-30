@@ -1,6 +1,6 @@
 # Docs ui components
 
-This is a collection of useful UI components for documentation websitse.
+This is a collection of useful UI components for documentation websites.
 Works best together with [@jannnik/mdx](../mdx).
 
 ## Features
@@ -15,10 +15,11 @@ Works best together with [@jannnik/mdx](../mdx).
 ## Usage
 
 1. Install
-2. Set up next to transpile `@jannnik/ui`
-3. Configure mdx to use `@jannnik/ui`
-4. Initialize twind
-5. Start using the components, icons and hooks
+2. Add twind dependencies
+3. Set up next to transpile `@jannnik/ui`
+4. Configure mdx to use `@jannnik/ui`
+5. Initialize twind
+6. Start using the components, icons and hooks
 
 
 **Install**:
@@ -42,6 +43,13 @@ const nextConfig = {
 export default withMDX(nextConfig)
 ```
 
+**Add twind dependencies**:
+
+```bash
+pnpm add @twind/core @twind/preset-autoprefix @twind/preset-tailwind @twind/preset-tailwind-forms @twind/preset-typography
+```
+
+
 **Configure mdx to use `@jannnik/ui`**:
 
 ```tsx
@@ -57,7 +65,7 @@ import { components } from '@jannnik/ui/components/native-replacements'
 
 ```tsx
 // pages/_app.tsx
-import { tw } from '@jannnik/ui/twind/index'
+import { tw } from '@twind/core'
 import withNextApp from '@jannnik/ui/twind/next/app'
 import { config } from '@jannnik/ui/twind/config'
 

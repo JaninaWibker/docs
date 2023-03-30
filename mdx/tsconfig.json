@@ -15,7 +15,8 @@
     "allowSyntheticDefaultImports": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ],
   "include": [ "**/*.ts", "**/*.tsx", "../mdx/mdx-annotations.d.ts" ]
 }

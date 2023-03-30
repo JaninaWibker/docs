@@ -1,21 +1,30 @@
 {
   "name": "@jannnik/mdx",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "A collection of MDX plugins which make writing documentation a bit easier",
+  "license": "MIT",
+  "author": "J. Wibker",
+  "homepage": "https://github.com/JannikWibker/docs/tree/main/mdx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JannikWibker/docs"
+  },
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "readme.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint ./src --ext ts"
+    "lint": "eslint ./src --ext ts",
+    "ci:publish-preparations": "cp ../LICENSE ."
   },
   "dependencies": {
-    "@types/hast": "^2.3.4",
     "hast-util-is-element": "^2.1.3",
     "mdx-annotations": "^0.1.1",
     "recma-nextjs-static-props": "^1.0.0",
@@ -25,6 +34,7 @@
     "unist-util-visit": "^4.1.2"
   },
   "devDependencies": {
+    "@types/hast": "^2.3.4",
     "@types/estree": "^1.0.0",
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.47.0",

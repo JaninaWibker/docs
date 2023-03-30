@@ -58,7 +58,7 @@ jobs:
         id: publish
         with:
           increment-type: pre-release
-          relevant-files: '[".github/**", "${{ matrix.packages.path }}/**", "package.json", ".eslintrc.js", "pnpm-workspace.yaml"]'
+          relevant-files: '[".github/**", "${{ matrix.packages.path }}/**", "LICENSE", "package.json", ".eslintrc.js", "pnpm-workspace.yaml"]'
           package-json-file-path: '${{ matrix.packages.path }}/package.json'
           latest-registry-version: ${{ env.CI_PUBLISHED_VERSION }}
           version-metadata-json: ${{ steps.version-metadata.outputs.json }}
@@ -66,6 +66,9 @@ jobs:
       # github casts all outputs to strings, so evaluate against the string 'true' here :)
         if: steps.publish.outputs.publish == 'true'
       - run: 'pnpm --filter "${{ matrix.packages.name }}" build'
+        if: steps.publish.outputs.publish == 'true'
+      - name: Make preparations for publishing, e.g. copying the LICENSE file to the package directory
+        run: 'pnpm --filter "${{ matrix.packages.name }}" ci:publish-preparations'
         if: steps.publish.outputs.publish == 'true'
       - name: publish npm package
         if: steps.publish.outputs.publish == 'true'
