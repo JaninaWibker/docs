@@ -1,6 +1,7 @@
 import { Callout } from '@jannnik/ui/components/Callout'
 import { Lightbulb, Contact, Link, Info, Warn } from '@jannnik/ui/icons'
 import { Heading } from '@jannnik/ui/components/native-replacements/Heading'
+import { Cards, Card } from '@jannnik/ui/components/Card'
 import { CodeGroup, InlineCode } from '@jannnik/ui/components/native-replacements/Code'
 
 # h1 - Hi there {{ id: 'blub' }}
@@ -34,6 +35,15 @@ Some placeholder text to test out margins for headings
 Some placeholder text to test out margins for headings
 
 This is a demo documentation landing page.
+
+<Cards>
+  <Card title="Contacts" Icon={Contact} link="/">
+    Learn something about the contacts api. REST and all that stuff. This is a very long description that should be wrapped.
+  </Card>
+  <Card title="Lightbulbs" Icon={Lightbulb} link="/">
+    Learn how to control your lightbulbs with the lightbulbs api. REST and all that stuff, very smart home.
+  </Card>
+</Cards>
 
 
 ```ts {{ "title": "This is a title of a code block", "highlights": [{ "line": 2, "column": 14, "match": "a, b, c", "color": "red" }, { "line": 8, "column": 3, "match": "b", "color": "green" }, { "line": 10, "column": 5, "match": "return 3", "color": "blue" }] }}

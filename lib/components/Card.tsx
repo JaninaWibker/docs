@@ -1,42 +1,45 @@
 import type { PropsWithChildren } from 'react'
 import type { IconComponent } from '../icons'
-import { tw, tx } from '@twind/core'
+import Link from 'next/link'
+import { tw, tx, css } from '@twind/core'
 
 export type CardProps = PropsWithChildren<{
   /**
-   * determines the color of the card
-   * @default 'default'
+   * The title of the card, use the children prop for the description
    */
-  variant?: 'default' | 'primary' | 'secondary' | 'positive' | 'negative' | 'info',
+  title: string,
+  /**
+   * Where to navigate to when the card is clicked
+   */
+  link: string,
   /**
    * Icon to display on the left side of the card
    */
   Icon?: IconComponent
 }>
 
-export const Card = ({ children, variant = 'default', Icon }: CardProps) => {
+
+export const Cards = ({ children }: PropsWithChildren) => {
   return (
-    <div className={tx('my-4 py-4 px-2 rounded-xl border flex', {
-      'bg-gray-100/50      text-gray-800      border-gray-300     ': variant === 'default',
-      'bg-primary-100/50   text-primary-900   border-primary-300  ': variant === 'primary',
-      'bg-secondary-100/50 text-secondary-900 border-secondary-300': variant === 'secondary',
-      'bg-positive-200/50  text-positive-800  border-positive-300 ': variant === 'positive',
-      'bg-negative-200/50  text-negative-800  border-negative-300 ': variant === 'negative',
-      'bg-info-200/50      text-info-200      border-info-300     ': variant === 'info',
-    })}>
-      {Icon ? (
-        <div className={tx('mx-2 w-5 h-5 rounded-full', {
-          'bg-gray-300': variant === 'default',
-          'bg-primary-300': variant === 'primary',
-          'bg-secondary-300': variant === 'secondary',
-          'bg-positive-300': variant === 'positive',
-          'bg-negative-300': variant === 'negative',
-          'bg-info-300': variant === 'info'
-        })}>
-          <Icon className={tw('w-5 h-5 p-1 text-white')} />
-        </div>
-      ) : null}
-      <div className={tw('mx-2 [&>:first-child]:mt-0 [&>:last-child]:mb-0')}>{children}</div>
+    <div className={tw('grid grid-cols-2 gap-x-4')}>
+      {children}
     </div>
+  )
+}
+
+
+export const Card = ({ link, title, children, Icon }: CardProps) => {
+  return (
+    <Link href={link} className={tw('block group border-1 rounded-xl border-primary-300/50 hover:border-primary-500 hover:bg-primary-100/30')}>
+      <div className={tw('transition-all duration-300 px-4 pt-12 pb-4')}>
+        {Icon ? (
+          <div className={tw('w-fit h-fit transition-colors rounded-full bg-primary-100/30 border border-primary-300 group-hover:bg-white group-hover:border-primary-500')}>
+            <Icon className={tw('w-10 h-10 p-2 text-primary-600 group-hover:text-primary-700')} />
+          </div>
+        ) : null}
+        <h3 className={tw('mt-4 mb-2 text-lg font-space font-bold leading-7')}>{title}</h3>
+        <span className={tw('mt-1 text-sm text-slate-600')}>{children}</span>
+      </div>
+    </Link>
   )
 }
