@@ -141,3 +141,11 @@ export const Span = ({ children, className, highlight, highlightColor, ...restPr
     }) : className} {...dataIsHighlight} {...restProps}>{children}</span>
   )
 }
+
+export const InlineCode = ({ children, color = 'red' }: PropsWithChildren<{ color?: string }>) => (
+  <span className={tx('rounded px-1 py-[1.5px] border-b-[2px] [&>*]:!text-white', {
+    'bg-red-500/40   border-red-500/70': color === 'red',
+    'bg-green-500/40 border-green-500/70': color === 'green',
+    'bg-blue-500/40  border-blue-500/70': color === 'blue'
+  })}>{children}</span>
+)
