@@ -9,6 +9,7 @@ import { config } from '@jannnik/ui/twind/config'
 import type { TocCategories } from '@jannnik/ui/components/Layout'
 import { Layout } from '@jannnik/ui/components/Layout'
 import { components } from '@jannnik/ui/components/native-replacements'
+import { Header } from '@jannnik/ui/components/Header'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <div className={tw('font-sans')}>
         <MDXProvider components={components}>
-          <Layout icon={<span>LOGO</span>} toc={tableOfContents} options={pageProps.options || {}} pathname={router.pathname}>
+          <Layout header={<Header />} toc={tableOfContents} options={pageProps.options || {}} pathname={router.pathname}>
             <Component {...pageProps} />
           </Layout>
         </MDXProvider>

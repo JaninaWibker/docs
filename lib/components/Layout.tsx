@@ -14,7 +14,7 @@ import { HeadingProvider } from '../util/heading-context'
 export type TocCategories = Omit<TocCategory, 'key'>[]
 
 export type LayoutProps = PropsWithChildren<{
-  icon: ReactNode,
+  header: ReactNode,
   toc: Omit<TocCategory, 'key'>[],
   /**
    * options per page
@@ -29,7 +29,7 @@ export type LayoutProps = PropsWithChildren<{
   pathname: string
 }>
 
-export const Layout = ({ children, icon, toc, options = { pagination: true }, pathname }: LayoutProps) => {
+export const Layout = ({ children, header, toc, options = { pagination: true }, pathname }: LayoutProps) => {
   console.log(options)
 
   const slugifiedTableOfContents = useMemo(() => toc.map((category) => ({
@@ -52,29 +52,32 @@ export const Layout = ({ children, icon, toc, options = { pagination: true }, pa
   )
 
   return (
-    <div className={tw('max-w-7xl mx-auto ')}>
-      <Header />
-      <div className={tw('flex justify-center')}>
-        <HeadingProvider>
-          <div className={tw('pointer-events-none flex z-20')}>
-            <div className={tw('bg-white pointer-events-auto w-72 overflow-y-hidden hover:overflow-y-auto border-r border-primary-300/50 py-4 pl-6 pr-4')} style={{
-              scrollbarGutter: 'stable'
-            }}>
-              <div className={tw('flex')}>
-                {icon}
-              </div>
-              <Sidebar toc={slugifiedTableOfContents} activeCategoryAndPage={activeCategoryAndPage} />
-            </div>
-          </div>
-          <div className={tw('px-6 pt-12 max-w-[832px]')}>
-            {children}
-            <Footer />
-          </div>
-          <div className={tw('w-72')}>
-
-          </div>
-        </HeadingProvider>
+    <>
+      <div className={tw('fixed z-30 w-full border-b-1 border-primary-300/50')}>
+        <div className={tw('max-w-7xl mx-auto h-12 px-6')}>
+          {header}
+        </div>
       </div>
-    </div>
+      <div className={tw('max-w-7xl mx-auto pt-12')}>
+        <div className={tw('flex justify-center')}>
+          <HeadingProvider>
+            <div className={tw('pointer-events-none flex z-20')}>
+              <div className={tw('bg-white pointer-events-auto w-72 overflow-y-hidden hover:overflow-y-auto border-r border-primary-300/50 py-4 pl-6 pr-4')} style={{
+                scrollbarGutter: 'stable'
+              }}>
+                <Sidebar toc={slugifiedTableOfContents} activeCategoryAndPage={activeCategoryAndPage} />
+              </div>
+            </div>
+            <div className={tw('px-6 pt-12 max-w-[832px]')}>
+              {children}
+              <Footer />
+            </div>
+            <div className={tw('w-72')}>
+
+            </div>
+          </HeadingProvider>
+        </div>
+      </div>
+    </>
   )
 }

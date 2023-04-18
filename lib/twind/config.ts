@@ -180,7 +180,13 @@ export const config = defineConfig({
       }
     }
   },
-  presets: [presetAutoprefix(), presetTailwind(), presetTailwindForms(), presetTypography()]
+  variants: [
+    [
+      'supports-backdrop-blur',
+      '@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0))'
+    ]
+  ],
+  presets: [presetAutoprefix(), presetTailwind(), presetTailwindForms(), presetTypography()],
 }) as unknown as TwindConfig
 
 export default config
