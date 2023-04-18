@@ -52,26 +52,29 @@ export const Layout = ({ children, icon, toc, options = { pagination: true }, pa
   )
 
   return (
-    <div className={tw('')}>
-      <HeadingProvider>
-        <header className={tw('pointer-events-none fixed inset-0 flex z-20')}>
-          <div className={tw('bg-white pointer-events-auto w-72 overflow-y-hidden hover:overflow-y-auto border-r border-primary-300/50 py-4 pl-6 pr-4')} style={{
-            scrollbarGutter: 'stable'
-          }}>
-            <div className={tw('flex')}>
-              {icon}
-            </div>
-            <Header />
+    <div className={tw('max-w-7xl mx-auto ')}>
+      <Header />
+      <div className={tw('flex justify-center')}>
+        <HeadingProvider>
+          <div className={tw('pointer-events-none flex z-20')}>
+            <div className={tw('bg-white pointer-events-auto w-72 overflow-y-hidden hover:overflow-y-auto border-r border-primary-300/50 py-4 pl-6 pr-4')} style={{
+              scrollbarGutter: 'stable'
+            }}>
+              <div className={tw('flex')}>
+                {icon}
+              </div>
               <Sidebar toc={slugifiedTableOfContents} activeCategoryAndPage={activeCategoryAndPage} />
+            </div>
           </div>
-        </header>
-        <div className={tw('ml-72 relative px-6 pt-12')}>
-          <div className={tw('w-full')}>
+          <div className={tw('px-6 pt-12 max-w-[832px]')}>
             {children}
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </HeadingProvider>
+          <div className={tw('w-72')}>
+
+          </div>
+        </HeadingProvider>
+      </div>
     </div>
   )
 }
