@@ -1,6 +1,8 @@
 import { Callout } from '@jannnik/ui/components/Callout'
 import { Lightbulb, Contact, Link, Info, Warn } from '@jannnik/ui/icons'
 import { Heading } from '@jannnik/ui/components/native-replacements/Heading'
+import { Properties } from '@jannnik/ui/components/Properties'
+import { Property } from '@jannnik/ui/components/Property'
 import { Cards, Card } from '@jannnik/ui/components/Card'
 import { CodeGroup, InlineCode } from '@jannnik/ui/components/native-replacements/Code'
 
@@ -48,6 +50,20 @@ This is a demo documentation landing page.
   </Card>
 </Cards>
 
+<Properties>
+  <Property name="first" type="string">
+    lorem ipsum
+  </Property>
+  <Property name="second" type="number">
+    lorem ipsum
+  </Property>
+  <Property name="third" type="boolean">
+    lorem ipsum
+  </Property>
+  <Property name="fourth" type="Date">
+    lorem ipsum
+  </Property>
+</Properties>
 
 ```ts {{ "title": "This is a title of a code block", "highlights": [{ "line": 2, "column": 14, "match": "a, b, c", "color": "red" }, { "line": 8, "column": 3, "match": "b", "color": "green" }, { "line": 10, "column": 5, "match": "return 3", "color": "blue" }] }}
 const blub = '123'
@@ -136,3 +152,9 @@ const x = {
 
   Some more text.
 </Callout>
+
+## All h2 headings
+
+## have links
+
+## no other headings have links

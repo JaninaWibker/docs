@@ -31,12 +31,12 @@ const tableOfContents: TocCategories = [
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
+  const maybeTitle = pageProps.options !== undefined ? pageProps.options.title : undefined
 
-  // TODO: pageProps.title is undefined most of the time, will have to find another way to get the title of the page
   return (
     <>
       <Head>
-        <title>{router.pathname === '/' ? 'Docs' : `${pageProps.title} | Docs`}</title>
+        <title>{router.pathname === '/' ? 'Docs' : `${maybeTitle || router.pathname.substring(1)} | Docs`}</title>
         <style>{`
           :root {
             --font-inter: ${inter.style.fontFamily};
