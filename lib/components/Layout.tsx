@@ -54,11 +54,11 @@ export const Layout = ({ children, header, toc, options = { pagination: true }, 
   return (
     <>
       <div className={tw('fixed z-30 w-full border-b-1 border-primary-300/50')}>
-        <div className={tw('max-w-7xl mx-auto h-12 px-6')}>
+        <div className={tw('max-w-7xl w-full mx-auto h-12 px-6')}>
           {header}
         </div>
       </div>
-      <div className={tw('max-w-7xl mx-auto pt-12')}>
+      <div className={tw('max-w-7xl w-full mx-auto pt-12')}>
         <div className={tw('flex justify-center')}>
           <HeadingProvider>
             <div className={tw('pointer-events-none flex z-20')}>
@@ -68,7 +68,7 @@ export const Layout = ({ children, header, toc, options = { pagination: true }, 
                 <Sidebar toc={slugifiedTableOfContents} activeCategoryAndPage={activeCategoryAndPage} />
               </div>
             </div>
-            <div className={tw('px-6 pt-12 max-w-[832px]')}>
+            <div className={tw('px-6 pt-12 max-w-[832px] w-full')}>
               {children}
               <Footer />
             </div>
