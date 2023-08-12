@@ -18,7 +18,8 @@
     "@twind/preset-tailwind": "^1.1.4",
     "@twind/preset-tailwind-forms": "^1.1.2",
     "@twind/preset-typography": "^1.0.7",
-    "next": "^13.4.13",
+    "lucide-react": "^0.265.0",
+    "next": "13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

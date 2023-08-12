@@ -9,7 +9,7 @@ import { config } from '@jannnik/ui/twind/config'
 import type { TocCategories } from '@jannnik/ui/components/Layout'
 import { Layout } from '@jannnik/ui/components/Layout'
 import { components } from '@jannnik/ui/components/native-replacements'
-import { Header } from '@jannnik/ui/components/Header'
+import { Header, HeaderDivider, HeaderGithubLink, HeaderLink } from '@jannnik/ui/components/Header'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,6 +39,27 @@ const tableOfContents: TocCategories = [
   }
 ]
 
+const CustomizedHeader = ({ pathname }: { pathname: string }) => {
+  const links = [
+    { key: 'link-documentation', title: 'Documentation', to: '/' },
+    { key: 'link-about', title: 'About', to: '/about' }
+  ]
+
+  const activePage = links.find((link) => link.to === pathname) || links[0]
+
+  return (
+    <Header left={[
+
+    ]} right={[
+      ...links.map((link) => (
+        <HeaderLink key={link.key} title={link.title} to={link.to} active={link === activePage} />
+      )),
+      <HeaderDivider key="divider-1" />,
+      <HeaderGithubLink key="github-link-1" url="https://github.com/JannikWibker/docs" />
+    ]} />
+  )
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
   const maybeTitle = pageProps.options !== undefined ? pageProps.options.title : undefined
@@ -56,7 +77,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <div className={tw('font-sans')}>
         <MDXProvider components={components}>
-          <Layout header={<Header />} toc={tableOfContents} options={pageProps.options || {}} pathname={router.pathname}>
+          <Layout header={<CustomizedHeader pathname={router.pathname} />} toc={tableOfContents} options={pageProps.options || {}} pathname={router.pathname}>
             <Component {...pageProps} />
           </Layout>
         </MDXProvider>

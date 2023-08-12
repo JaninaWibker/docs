@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
-import { WarnCircle, Lightbulb, InfoCircle } from '../icons'
 import type { IconComponent } from '../icons'
 import { tw, tx } from '@twind/core'
+import { AlertCircle, Info as InfoCircle, Lightbulb } from 'lucide-react'
 
 export type CalloutProps = PropsWithChildren<{
   /**
@@ -47,7 +47,7 @@ export const Info = ({ children }: PropsWithChildren) => (
 )
 
 export const Warning = ({ children }: PropsWithChildren) => (
-  <Callout variant="negative" Icon={WarnCircle as IconComponent}>{children}</Callout>
+  <Callout variant="negative" Icon={AlertCircle as IconComponent}>{children}</Callout>
 )
 
 export const Tip = ({ children }: PropsWithChildren) => (
