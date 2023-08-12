@@ -165,6 +165,10 @@ export const colors = {
   ...darkColors
 }
 
+const minMaxSizes = {
+  '8xl': '88rem'
+}
+
 export const config = defineConfig({
   darkMode: 'class',
   theme: {
@@ -177,7 +181,11 @@ export const config = defineConfig({
       fontFamily: {
         sans: ['var(--font-inter)', ...fontFamily.sans],
         space: ['var(--font-space)', ...fontFamily.sans]
-      }
+      },
+      maxWidth: minMaxSizes,
+      minWidth: minMaxSizes,
+      maxHeight: minMaxSizes,
+      minHeight: minMaxSizes
     }
   },
   variants: [

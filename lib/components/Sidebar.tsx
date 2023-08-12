@@ -61,17 +61,20 @@ type NavigationItemProps = {
 
 const NavigationItem = ({ item, active, headings, headingsInView }: NavigationItemProps) => {
   return (
-    <li className={tw('')}>
-      <Link className={tx('block py-1 pl-2 text-sm', {
-        'text-slate-600': !active,
-        'text-slate-900': active
+    <li className={tw('relative')}>
+      {active ? (
+        <div className={tw('absolute -left-2 w-[1px] bg-primary-600 h-full')}></div>
+      ) : null}
+      <Link className={tx('block py-1.5 pl-2 text-sm', {
+        'text-slate-500': !active,
+        'text-slate-9000': active
       })} href={item.href} data-state-active={active}>
         {item.title}
       </Link>
       <ul className={tw('')}>
         {headings.map((heading) => (
           <li key={heading.title}>
-            <Link className={tw('block text-sm py-1 pl-6 pr-2')} href={`#${heading.hash}`}>{heading.title}</Link>
+            <Link className={tw('block text-sm py-1 pl-6 pr-2 text-slate-500')} href={`#${heading.hash}`}>{heading.title}</Link>
           </li>
         ))}
       </ul>
@@ -101,7 +104,7 @@ const NavigationCategory = ({ category, isCategoryActive, activePage }: { catego
           <NavigationItem key={item.title} item={item} active={item.href === activePage} headings={item.href === activePage ? actualPageHeadings : []} headingsInView={[]} />
         ))}
       </ul>
-        <div className={tw('absolute top-0 mt-2 h-[calc(100%-2*4px)] w-px bg-primary-300/50')}></div>
+        <div className={tw('absolute top-0 mt-2 h-[calc(100%-2*4px)] w-px bg-primary-300/30')}></div>
       </div>
     </li>
   )
