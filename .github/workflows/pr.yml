@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 6.32.2
+          version: 8.5.1
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
@@ -20,6 +20,8 @@ jobs:
         run: pnpm --filter @jannnik/ui lint
       - name: Build mdx package
         run: pnpm --filter @jannnik/mdx build
+      - name: Test build ui package
+        run: pnpm --filter @jannnik/ui build
       - name: Re-install to consume newly build mdx package
         run: pnpm install
       - name: Lint docs package
