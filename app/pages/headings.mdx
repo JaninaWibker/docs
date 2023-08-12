@@ -1,0 +1,54 @@
+import { InlineCode } from '@jannnik/ui/components/native-replacements/Code'
+
+# Headings
+
+All heading levels from 1 through to 6 are styled.
+
+
+## Linking to headings
+
+Some headings are given clickable links which link to the heading itself.
+This is useful for sharing specific sections of a page.
+
+As h1 headings are usually only ever found at the top of a page they don't benefit from having their own link.
+
+Similarly having a link for h4 and beyond is also not all too useful as this increases visual clutter and the likelihood of needing to link to a specific h4, h5, or h6 is very low anyway (there probably is a better h3 to click somewhere close).
+
+
+## Customization
+
+You can of course override this behaviour on a per-heading basis.
+To do so add the <InlineCode color="blue">`hasLink: true`</InlineCode> property to the heading.
+
+Use <InlineCode color="blue">`omitSidebarLink: true`</InlineCode> to exclude a heading from the sidebar navigation.
+
+The assigned id of the heading can also be customized using <InlineCode color="blue">`id: '<your id>'`</InlineCode>, by default the id is derived from the heading text by slugifying it.
+
+## Preview
+
+<br />
+
+# h1 - Hi there {{ id: 'custom-id', omitSidebarLink: true }}
+
+Some placeholder text to test out margins for headings
+
+## h2 - Hi there {{ omitSidebarLink: true }}
+
+Some placeholder text to test out margins for headings
+
+### h3 - Hi there {{ omitSidebarLink: true }}
+
+Some placeholder text to test out margins for headings
+
+#### h4 - Hi there
+
+Some placeholder text to test out margins for headings
+
+##### h5 - Hi there
+
+Some placeholder text to test out margins for headings
+
+###### h6 - Hi there {{ hasLink: true, omitSidebarLink: true }}
+
+Some placeholder text to test out margins for headings.
+This heading has a link added using `hasLink: true`.

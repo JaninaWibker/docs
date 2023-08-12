@@ -1,0 +1,100 @@
+import { ColorCard } from '@jannnik/ui/components/ColorCard'
+import { tw } from '@jannnik/ui/twind'
+import { baseColors, lightColors, darkColors } from '@jannnik/ui/twind/config'
+import { Callout } from '@jannnik/ui/components/Callout'
+import { Link, Info, Warn } from '@jannnik/ui/icons'
+
+export const options = {
+  title: 'Design System',
+  pagination: false
+}
+
+# Design System
+
+## Typography
+
+For typography two fonts are mainly used: [Space Grotesk](https://floriankarsten.github.io/space-grotesk/) and [Inter](https://rsms.me/inter).
+For monospace Menlo is preferred.
+
+For headings and other prominent UI elements Space Grotesk is used.
+Normal text and smaller UI elements are set in Inter.
+
+
+## Colors
+
+The base colors are a set of colors from which the light and dark colors are derived.
+Light colors occupy a slice of each colors shades and dark colors do the same.
+
+The accent color is a blueish purple.
+In addition there are green and red for positive and negative feedback.
+
+There are often many shades of either very light or very dark greys needed, those are included as well.
+
+
+### Base colors
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(baseColors.primary).map(([ shade, color ]) => (
+    <ColorCard key={`primary-${shade}`} name="primary" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(baseColors.positive).map(([ shade, color ]) => (
+    <ColorCard key={`positive-${shade}`} name="positive" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(baseColors.negative).map(([ shade, color ]) => (
+    <ColorCard key={`negative-${shade}`} name="negative" color={color} shade={shade} />
+  ))}
+</div>
+
+
+### Light colors
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(lightColors['light-primary']).map(([ shade, color ]) => (
+    <ColorCard key={`light-primary-${shade}`} name="light-primary" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(lightColors['light-positive']).map(([ shade, color ]) => (
+    <ColorCard key={`light-positive-${shade}`} name="light-positive" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(lightColors['light-negative']).map(([ shade, color ]) => (
+    <ColorCard key={`light-negative-${shade}`} name="light-negative" color={color} shade={shade} />
+  ))}
+</div>
+
+
+### Dark colors
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(darkColors['dark-primary']).map(([ shade, color ]) => (
+    <ColorCard key={`dark-primary-${shade}`} name="dark-primary" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(darkColors['dark-positive']).map(([ shade, color ]) => (
+    <ColorCard key={`dark-positive-${shade}`} name="dark-positive" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(darkColors['dark-negative']).map(([ shade, color ]) => (
+    <ColorCard key={`dark-negative-${shade}`} name="dark-negative" color={color} shade={shade} />
+  ))}
+</div>
+
+<div className={tw('flex gap-4 mb-12 flex-wrap')}>
+  {Object.entries(darkColors['dark-gray']).map(([ shade, color ]) => (
+    <ColorCard key={`dark-gray-${shade}`} name="dark-gray" color={color} shade={shade} />
+  ))}
+</div>

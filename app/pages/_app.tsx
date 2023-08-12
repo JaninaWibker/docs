@@ -23,10 +23,19 @@ const spaceGrotesk = SpaceGrotesk({
 
 const tableOfContents: TocCategories = [
   {
-    title: 'Some title',
+    title: 'Introduction',
     items: [
-      { href: '/', title: 'Index page' },
+      { href: '/', title: 'Introduction' },
+      { href: '/design-system', title: 'Design System' }
     ]
+  },
+  {
+    title: 'Components',
+    items: [
+      { href: '/callouts', title: 'Callouts' },
+      { href: '/code-blocks', title: 'Code blocks' },
+      { href: '/headings', title: 'Headings' },
+    ],
   }
 ]
 
