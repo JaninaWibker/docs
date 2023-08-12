@@ -20,6 +20,8 @@ jobs:
         run: pnpm --filter @jannnik/ui lint
       - name: Build mdx package
         run: pnpm --filter @jannnik/mdx build
+      - name: Test build ui package
+        run: pnpm --filter @jannnik/ui build
       - name: Re-install to consume newly build mdx package
         run: pnpm install
       - name: Lint docs package
