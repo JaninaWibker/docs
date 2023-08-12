@@ -1,0 +1,51 @@
+import { CodeGroup } from '@jannnik/ui/components/native-replacements/Code'
+
+export const options = {
+  title: 'Code blocks'
+}
+
+# Code blocks
+
+```ts {{ "title": "This is a title of a code block", "highlights": [{ "line": 2, "column": 14, "match": "a, b, c", "color": "red" }, { "line": 8, "column": 3, "match": "b", "color": "green" }, { "line": 10, "column": 5, "match": "return 3", "color": "blue" }] }}
+const blub = '123'
+function abc(a, b, c) {
+
+}
+const id = <T>(element: T): T => element
+const x = {
+  a: 1,
+  b: 2,
+  c() {
+    return 3
+  }
+}
+```
+
+<CodeGroup title="ttttitle">
+  ```ts
+  const blub = '123'
+  ```
+
+  ```python
+  blub = '123'
+  ```
+
+  ```lua {{ "title": "Lua" }}
+  local blub = '123'
+  ```
+</CodeGroup>
+
+
+<CodeGroup>
+  ```ts
+  const blub = '123'
+  ```
+
+  ```python
+  blub = '123'
+  ```
+
+  ```lua {{ "title": "Lua" }}
+  local blub = '123'
+  ```
+</CodeGroup>

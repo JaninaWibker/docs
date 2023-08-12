@@ -1,0 +1,55 @@
+import { Callout } from '@jannnik/ui/components/Callout'
+import { Info, Warn } from '@jannnik/ui/icons'
+import { Link } from 'lucide-react'
+
+export const options = {
+  title: 'Callouts'
+}
+
+# Callouts
+
+Callouts are intended to highlight some important message to the user.
+
+They come in a wide variety of variants and can be configured with or without an icon.
+
+<Callout variant="default" Icon={Link}>
+  This is some kind of message.
+
+  Some more text.
+</Callout>
+
+<Callout variant="primary" Icon={Info}>
+  This is some kind of message.
+
+  Some more text.
+</Callout>
+
+<Callout variant="secondary" Icon={Warn}>
+  This is some kind of message.
+
+  Some more text.
+</Callout>
+
+<Callout variant="positive" Icon={Link}>
+  This is some kind of message.
+
+  Some more text.
+</Callout>
+
+<Callout variant="negative" Icon={Warn}>
+  This is some kind of message.
+
+  Some more text.
+</Callout>
+
+<Callout variant="info" Icon={Info}>
+  This is some kind of message.
+
+  Some more text.
+</Callout>
+
+<Callout variant="primary">
+  Callout without an icon.
+
+  Some more text.
+</Callout>

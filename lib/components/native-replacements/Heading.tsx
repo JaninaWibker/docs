@@ -12,7 +12,8 @@ type HeadingProps<Level extends Levels> = ComponentPropsWithoutRef<`h${Level}`> 
   className?: string,
   level: Levels,
   id?: string,
-  hasLink?: boolean
+  hasLink?: boolean,
+  omitSidebarLink?: boolean
 }>
 
 type NativeHeadingProps<Level extends Levels> = Omit<HeadingProps<Level>, 'level' | 'hasLink'>
@@ -51,6 +52,7 @@ export const Heading = <Level extends Levels>({
   title = stringifyReactNode(children),
   id = slugify(title),
   hasLink = false,
+  omitSidebarLink = false,
   ...rest
 }: HeadingProps<Level>) => {
   const Component = `h${level}` as const
@@ -60,6 +62,7 @@ export const Heading = <Level extends Levels>({
   const slugs = useSlugs()
 
   useEffect(() => {
+    if (omitSidebarLink) return
     if (!hasLink) return
     if (!headingAnchorRef.current) return
 
@@ -74,7 +77,7 @@ export const Heading = <Level extends Levels>({
         return newHeadings
       })
     }
-  }, [id, title, hasLink, headingAnchorRef, slugs, setPageHeadings])
+  }, [id, title, hasLink, omitSidebarLink, headingAnchorRef, slugs, setPageHeadings])
 
   return (
     <Component className={tx(headingStyles[Component], className)} id={id} {...rest}>
@@ -96,7 +99,7 @@ export const H2 = ({ children, ...rest }: NativeHeadingProps<2>) => (
 )
 
 export const H3 = ({ children, ...rest }: NativeHeadingProps<3>) => (
-  <Heading level={3} hasLink={false} {...rest}>
+  <Heading level={3} hasLink={true} omitSidebarLink={true} {...rest}>
     {children}
   </Heading>
 )
