@@ -1,13 +1,13 @@
 {
-  "name": "@jannnik/ui",
+  "name": "@_janina/ui",
   "version": "1.0.2",
   "description": "A collection of useful UI components for documentation websites",
   "license": "MIT",
-  "author": "J. Wibker",
-  "homepage": "https://github.com/JannikWibker/docs/tree/main/lib",
+  "author": "Janina Wibker",
+  "homepage": "https://github.com/JaninaWibker/docs/tree/main/lib",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JannikWibker/docs"
+    "url": "https://github.com/JaninaWibker/docs"
   },
   "main": "index.ts",
   "scripts": {

@@ -1,6 +1,6 @@
 # Docs
 
-This is ment as a tool for quickly building a documentation site for your project.
+This is meant as a tool for quickly building a documentation site for your project.
 
 This project is made up of 3 parts:
 - [`app/`](/app): This is the boilerplate code you'll likely copy or recreate for your project. This is where you put your mdx files

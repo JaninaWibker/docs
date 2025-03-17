@@ -1,7 +1,7 @@
 # Docs ui components
 
 This is a collection of useful UI components for documentation websites.
-Works best together with [@jannnik/mdx](../mdx).
+Works best together with [@_janina/mdx](../mdx).
 
 ## Features
 
@@ -16,8 +16,8 @@ Works best together with [@jannnik/mdx](../mdx).
 
 1. Install
 2. Add twind dependencies
-3. Set up next to transpile `@jannnik/ui`
-4. Configure mdx to use `@jannnik/ui`
+3. Set up next to transpile `@_janina/ui`
+4. Configure mdx to use `@_janina/ui`
 5. Initialize twind
 6. Start using the components, icons and hooks
 
@@ -25,10 +25,10 @@ Works best together with [@jannnik/mdx](../mdx).
 **Install**:
 
 ```bash
-pnpm add @jannnik/ui
+pnpm add @_janina/ui
 ```
 
-**Set up next to transpile `@jannnik/ui`**:
+**Set up next to transpile `@_janina/ui`**:
 
 ```js
 // next.config.mjs
@@ -37,7 +37,7 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'mdx'],
   swcMinify: true,
-  transpilePackages: ['@jannnik/ui']
+  transpilePackages: ['@_janina/ui']
 }
 
 export default withMDX(nextConfig)
@@ -50,11 +50,11 @@ pnpm add @twind/core @twind/preset-autoprefix @twind/preset-tailwind @twind/pres
 ```
 
 
-**Configure mdx to use `@jannnik/ui`**:
+**Configure mdx to use `@_janina/ui`**:
 
 ```tsx
 // pages/_app.tsx
-import { components } from '@jannnik/ui/components/native-replacements'
+import { components } from '@_janina/ui/components/native-replacements'
 
 <MDXProvider components={components}>
   {/* ... */}
@@ -66,8 +66,8 @@ import { components } from '@jannnik/ui/components/native-replacements'
 ```tsx
 // pages/_app.tsx
 import { tw } from '@twind/core'
-import withNextApp from '@jannnik/ui/twind/next/app'
-import { config } from '@jannnik/ui/twind/config'
+import withNextApp from '@_janina/ui/twind/next/app'
+import { config } from '@_janina/ui/twind/config'
 
 // ...
 
@@ -77,8 +77,8 @@ export default withNextApp(config, MyApp)
 **Start using the components, icons and hooks**:
 
 ```tsx
-import { Card } from '@jannnik/ui'
-import { Info } from '@jannnik/ui/icons'
+import { Card } from '@_janina/ui'
+import { Info } from '@_janina/ui/icons'
 
 <Card variant="primary" Icon={Info}>
   This is some kind of message.

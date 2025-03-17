@@ -14,7 +14,7 @@ This is a collection of MDX plugins which make writing documentation a bit easie
 2. Add plugins to your `next.config.js` file
 
 ```bash
-pnpm add @jannnik/mdx
+pnpm add @_janina/mdx
 ```
 
 ```js
@@ -26,7 +26,7 @@ import {
   recmaNextjsStaticProps,
   recmaMdxAnnotations,
   remarkMdxAnnotations
-} from '@jannnik/mdx'
+} from '@_janina/mdx'
 
 const withMDX = nextMDX({
   options: {

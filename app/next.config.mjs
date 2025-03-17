@@ -1,7 +1,7 @@
 import nextMDX from '@next/mdx'
 // these need to be mjs files for now, as importing .ts files here obviously doesn't work
 // and there currently is no transpilation step
-import { rehypeParseCodeBlocks, rehypeShiki, rehypeHighlight, rehypeMdxAnnotations, recmaNextjsStaticProps, recmaMdxAnnotations, remarkMdxAnnotations } from '@jannnik/mdx'
+import { rehypeParseCodeBlocks, rehypeShiki, rehypeHighlight, rehypeMdxAnnotations, recmaNextjsStaticProps, recmaMdxAnnotations, remarkMdxAnnotations } from '@_janina/mdx'
 
 // good themes: poimandres, nord, rose-pine, rose-pine-moon
 const withMDX = nextMDX({
@@ -19,7 +19,7 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['ts', 'tsx', 'mdx'],
   swcMinify: true,
-  transpilePackages: ['@jannnik/ui']
+  transpilePackages: ['@_janina/ui']
 }
 
 export default withMDX(nextConfig)

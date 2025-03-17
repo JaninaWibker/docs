@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import withNextDocument from '@jannnik/ui/twind/next/document'
-import { config } from '@jannnik/ui/twind/config'
+import withNextDocument from '@_janina/ui/twind/next/document'
+import { config } from '@_janina/ui/twind/config'
 
 class MyDocument extends Document {
   render() {

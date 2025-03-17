@@ -1,13 +1,13 @@
 {
-  "name": "@jannnik/mdx",
+  "name": "@_janina/mdx",
   "version": "1.0.2",
   "description": "A collection of MDX plugins which make writing documentation a bit easier",
   "license": "MIT",
-  "author": "J. Wibker",
-  "homepage": "https://github.com/JannikWibker/docs/tree/main/mdx",
+  "author": "Janina Wibker",
+  "homepage": "https://github.com/JaninaWibker/docs/tree/main/mdx",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JannikWibker/docs"
+    "url": "https://github.com/JaninaWibker/docs"
   },
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",

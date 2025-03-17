@@ -15,16 +15,16 @@ jobs:
           cache: "pnpm"
       - run: pnpm install
       - name: Lint mdx package
-        run: pnpm --filter @jannnik/mdx lint
+        run: pnpm --filter @_janina/mdx lint
       - name: Lint ui package
-        run: pnpm --filter @jannnik/ui lint
+        run: pnpm --filter @_janina/ui lint
       - name: Build mdx package
-        run: pnpm --filter @jannnik/mdx build
+        run: pnpm --filter @_janina/mdx build
       - name: Test build ui package
-        run: pnpm --filter @jannnik/ui build
+        run: pnpm --filter @_janina/ui build
       - name: Re-install to consume newly build mdx package
         run: pnpm install
       - name: Lint docs package
-        run: pnpm --filter @jannnik/docs lint
+        run: pnpm --filter @_janina/docs lint
       - name: Build docs package
-        run: pnpm --filter @jannnik/docs build
+        run: pnpm --filter @_janina/docs build

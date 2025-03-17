@@ -4,12 +4,12 @@ import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
 import { Inter, Space_Grotesk as SpaceGrotesk } from '@next/font/google'
 import { tw } from '@twind/core'
-import withNextApp from '@jannnik/ui/twind/next/app'
-import { config } from '@jannnik/ui/twind/config'
-import type { TocCategories } from '@jannnik/ui/components/Layout'
-import { Layout } from '@jannnik/ui/components/Layout'
-import { components } from '@jannnik/ui/components/native-replacements'
-import { Header, HeaderDivider, HeaderGithubLink, HeaderLink } from '@jannnik/ui/components/Header'
+import withNextApp from '@_janina/ui/twind/next/app'
+import { config } from '@_janina/ui/twind/config'
+import type { TocCategories } from '@_janina/ui/components/Layout'
+import { Layout } from '@_janina/ui/components/Layout'
+import { components } from '@_janina/ui/components/native-replacements'
+import { Header, HeaderDivider, HeaderGithubLink, HeaderLink } from '@_janina/ui/components/Header'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -55,7 +55,7 @@ const CustomizedHeader = ({ pathname }: { pathname: string }) => {
         <HeaderLink key={link.key} title={link.title} to={link.to} active={link === activePage} />
       )),
       <HeaderDivider key="divider-1" />,
-      <HeaderGithubLink key="github-link-1" url="https://github.com/JannikWibker/docs" />
+      <HeaderGithubLink key="github-link-1" url="https://github.com/JaninaWibker/docs" />
     ]} />
   )
 }
