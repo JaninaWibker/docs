@@ -1,6 +1,6 @@
 {
   "name": "@_janina/mdx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A collection of MDX plugins which make writing documentation a bit easier",
   "license": "MIT",
   "author": "Janina Wibker",
